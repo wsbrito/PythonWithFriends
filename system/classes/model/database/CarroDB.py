@@ -5,8 +5,7 @@ class CarroDB(Connection.Connection):
 
     def inserir(self,carro):
         '''
-
-        :return:
+        Método responsável pela inclusão do carro na base de dados.
         '''
         try:
             connection = self.getConnection()
