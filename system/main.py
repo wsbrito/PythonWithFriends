@@ -1,23 +1,23 @@
 '''
 Start poin of Python With Friends application.
 '''
-from classes.model import Carro
-from classes.model.database import CarroDB
+import classes.view.MenuPrincipalView as menu
 
-c = Carro.Carro()
+'''
+Definição do método main que será responsável por instanciar a classe 
+MenuPrincipalVeiw
+'''
+def main():
+    # Instanciando um objeto da MenuPrincipalView
+    telaInicial = menu.MenuPrincipalView()
+    encerrou = telaInicial.opcoesSistema()
+    while(not encerrou):
+        encerrou = telaInicial.opcoesSistema()
+    print("Fim do programa")
+#------------------------------------------------------------------------
 
-c.setPlaca('KXB1420')
-
-c.setCor('Azul')
-
-c.setQtdePortas(4)
-
-c.setAnoFabricacao(2000)
-
-c.setQuilometragem(1000)
-
-c.setValorDiaria(85.9)
-
-carroDB = CarroDB.CarroDB()
-
-carroDB.inserir(c)
+'''
+Execução do método main
+'''
+if __name__ == '__main__':
+    main()
