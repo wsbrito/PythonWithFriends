@@ -27,12 +27,15 @@ class CarroView(mv.MainView):
             self.__atribuirDadosLidosTela(novoCarro,dadosLidos)
             dadosNaoValidados = novoCarro.validar()
             while( len(dadosNaoValidados) > 0):
+                self.limparTela()
+                self.__apresentarErros(dadosNaoValidados)
                 print("Favor informar novamente os seguintes dados")
-                dadosParaLeitura = self.__organizarDadosLeitura(dadosCarro,dadosNaoValidados)
+                dadosParaLeitura = \
+                    self.__organizarDadosLeitura(dadosCarro,dadosNaoValidados)
                 dadosLidos = self.recuperarDados(dadosParaLeitura)
                 self.__atribuirDadosLidosTela(novoCarro, dadosLidos)
                 dadosNaoValidados = novoCarro.validar()
-
+            #-----------------------------------------------------------------------------
             carroController = cc.CarroController()
             carroController.incluir(novoCarro)
             print("Carro incluído com sucesso.")
@@ -49,7 +52,7 @@ class CarroView(mv.MainView):
         :return:
         '''
         retorno = {}
-        for d, v in dadosNaoValidados:
+        for d, v in dadosNaoValidados.items():
             retorno[d] = dadosLidos[d]
         return retorno
     #--------------------------------------------------------------------------------
@@ -61,7 +64,8 @@ class CarroView(mv.MainView):
         :param dadosLidos:
         :return:
         '''
-        carro.setCor(dadosLidos['cor'])
+        if 'cor' in dadosLidos:
+            carro.setCor(dadosLidos['cor'])
         carro.setPlaca(dadosLidos['placa'])
         carro.setQtdePortas(dadosLidos['qtde_portas'])
         carro.setValorDiaria(dadosLidos['valor_diaria'])
@@ -85,4 +89,15 @@ class CarroView(mv.MainView):
                   str(carro.getCor())+"\t"+\
                   str(carro.getQtdePortas())+"\t"+\
                   str(carro.getValorDiaria()))
+    #--------------------------------------------------------------------------------
+
+    def __apresentarErros(self,erros):
+        '''
+        Método para exibição dos erros de validação encotrados em tela
+        :param erros Dicionário com os erro:
+        :return:
+        '''
+        print("Os seguintes problemas foram identificados:")
+        for erro in erros.values():
+            print(erro)
     #--------------------------------------------------------------------------------
