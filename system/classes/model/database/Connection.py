@@ -1,10 +1,10 @@
-'''
-Classe responsável pela conexão com a base de dados
-'''
 import sqlite3
 import os
 
 class Connection():
+    '''
+    Classe responsável pela conexão com a base de dados
+    '''
 
     def getConnection(self):
         '''

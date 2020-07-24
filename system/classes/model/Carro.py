@@ -1,13 +1,21 @@
 class Carro():
     '''
-
+    Classe de negócio que representa o carro
     '''
+
+    _id = -1
     _placa = ''
     _cor = ''
     _qtde_portas = 0
     _ano_fabricacao = 0
     _quilometragem = 0
     _valor_diaria = 0.0
+
+    def getId(self):
+        return self._id
+
+    def setId(self,id):
+        self._id = id
 
     def getPlaca(self):
         return self._placa
@@ -44,3 +52,38 @@ class Carro():
 
     def setValorDiaria(self,valorDiaria):
         self._valor_diaria = valorDiaria
+
+    def validar(self):
+        '''
+        Método responsável pela validação dos dados. Se o que foi preenchido está em conforme
+        com a obrigatoriedade e tipo de dado
+        :return: Dicionário com os erros encontrados
+        '''
+        retorno = {}
+
+        if(len(str(self._placa)) == 0):
+            retorno['placa'] = 'Placa é de preenchimento obrigatório'
+
+        try:
+            int(self._ano_fabricacao)
+        except:
+            retorno['ano_fabricacao'] = 'Ano de fabricação é um dado numérico'
+
+        try:
+            int(self._qtde_portas)
+        except:
+            retorno['qtde_portas'] = 'A quantidade de portas é um dado numérico'
+
+        try:
+            int(self._quilometragem)
+        except:
+            retorno['quilometragem'] = 'A quilometragem é um dado numérico'
+
+        try:
+            float(self._valor_diaria)
+        except:
+            retorno['valor_diaria'] = 'O valor da diária é um dado numérico'
+
+        return retorno
+    # validar
+    #-------------------------------------------------------------------------------------

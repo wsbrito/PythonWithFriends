@@ -1,10 +1,11 @@
-'''
-Classe responsável pelas iterações iniciais da aplicação com o usuário e
-da chamada as demais classes da camada de apresentações do sistema
-'''
-from os import system, name
+import classes.controller.MainController as m
+import classes.view.MainView as mv
 
-class MenuPrincipalView():
+class MenuPrincipalView(mv.MainView):
+    '''
+    Classe responsável pelas iterações iniciais da aplicação com o usuário e
+    da chamada as demais classes da camada de apresentações do sistema
+    '''
 
     '''
     Variável para controle do encerramento do sistema
@@ -16,10 +17,10 @@ class MenuPrincipalView():
     '''
     _opcoes = [0,1,2,3,4,5,6]
 
-    '''
-    Mètodo auxiliar para apresentar as opções na tela
-    '''
-    def imprimeOpcoes(self):
+    def __imprimeOpcoes(self):
+        '''
+        Mètodo auxiliar para apresentar as opções na tela
+        '''
         print("PYTHON WITH FRIEDNS - Locadora system\n\n")
         print("Opçoes do sistema:")
         print("1 - Cadastro de carro\n")
@@ -29,22 +30,23 @@ class MenuPrincipalView():
         print("5 - Registrar locação\n")
         print("6 - Registrar devolução\n\n")
         print("0 - Encerrar o programa")
+    #-----------------------------------------------------------------------
 
-
-    '''
-    Tela inicial da aplicação com as principais operações do sistema
-    '''
     def opcoesSistema(self):
+        '''
+        Tela inicial da aplicação com as principais operações do sistema
+        '''
         self.limparTela()
-        self.imprimeOpcoes()
+        self.__imprimeOpcoes()
         tecla = input("\nInforme a opção desejada e pressione a tecla ENTER para confirmar: ")
-        self.validarOpcaoInformada(tecla)
+        self.__validarOpcaoInformada(tecla)
         return self._encerrar_programa
+    #-----------------------------------------------------------------------
 
-    '''
-    Método para verificar se o que foi informado pelo usuário é uma opção válida e retonar 
-    '''
-    def validarOpcaoInformada(self,tecla):
+    def __validarOpcaoInformada(self,tecla):
+        '''
+        Método para verificar se o que foi informado pelo usuário é uma opção válida e retonar
+        '''
         try:
             opcao = int(tecla)
             if(opcao in self._opcoes):
@@ -55,8 +57,10 @@ class MenuPrincipalView():
                     self._encerrar_programa = True
                     return
                 if(opcao == 1):
-                    print("Cadastrar carro >> A opções ainda não está disponível")
+                    #print("Cadastrar carro >> A opções ainda não está disponível")
+                    self.__opcaoCadastrarCarro()
                 elif(opcao == 2):
+                    self.__opcaoAlterarCarro()
                     print("Atualizar carro >> A opções ainda não está disponível")
                 elif(opcao == 3):
                     print("Cadastro de cliente >> A opções ainda não está disponível")
@@ -72,15 +76,26 @@ class MenuPrincipalView():
                 print("Opção inválida")
                 self.opcoesSistema()
         except Exception as e:
-            print("Não foi possível identificar a opções selecionada. Tente novamente")
+            print("Ocorreu um erro na execução da operação: "+str(e))
+            input("Pressione ENTER para continuar")
             self.opcoesSistema()
-    '''
-    Método auxiliar para limpeza da tela
-    '''
-    def limparTela(self):
-        # for windows
-        if name == 'nt':
-            _ = system('cls')
-        # for mac and linux(here, os.name is 'posix')
-        else:
-            _ = system('clear')
+    #-----------------------------------------------------------------------
+
+    def __opcaoCadastrarCarro(self):
+        '''
+        Método que irá apresentar a tela de cadastro de carro porém utilizando o método da
+        classe MainContorller
+        :return:
+        '''
+        mainController = m.MainController()
+        mainController.opcaoCadastrarCarro()
+    #-----------------------------------------------------------------------
+
+    def __opcaoAlterarCarro(self):
+        '''
+        Método responsável pela alteração dos dados do carro
+        :return:
+        '''
+        mainController = m.MainController()
+        mainController.opcaoAlterarCarro()
+    # -----------------------------------------------------------------------

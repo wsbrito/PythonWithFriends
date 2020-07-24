@@ -1,3 +1,7 @@
+'''
+Arquivo de inicialização que tem a responsabilidade de identificar se o banco de dados
+locadora.db existe se não ele irá criálo
+'''
 import os
 
 try:
@@ -5,14 +9,17 @@ try:
     #print('os.getcwd() = '+os.getcwd())
     current_path = os.getcwd() + '/classes/model/database/'
 
+    # Validando a existência do banco de dados no diretório das classes do sistema
     if not os.path.exists(current_path + 'locadora.db'):
         print('Banco de dados não localizado')
 
         import sqlite3
 
+        # Criando o banco de dados
         con = sqlite3.connect(current_path + 'locadora.db')
         cur = con.cursor()
 
+        # Executando a criação das tabelas
         cur.execute(
             'CREATE TABLE carro(' \
             'id integer PRIMARY key AUTOINCREMENT,' \
@@ -48,6 +55,7 @@ try:
             'FOREIGN KEY (id_carro) REFERENCES carro (id) on DELETE RESTRICT,' \
             'FOREIGN key (id_cliente) REFERENCES cliente (id) on DELETE RESTRICT)')
 
+        # fechando a conexão
         con.close()
 
         print('Banco de dados criado com sucesso')
