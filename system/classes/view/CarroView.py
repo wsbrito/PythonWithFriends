@@ -25,6 +25,8 @@ class CarroView(mv.MainView):
             dadosLidos = self.recuperarDados(dadosCarro)
             novoCarro = c.Carro()
             self.__atribuirDadosLidosTela(novoCarro,dadosLidos)
+
+            # Enquanto os dados não forem válidos
             dadosNaoValidados = novoCarro.validar()
             while( len(dadosNaoValidados) > 0):
                 self.limparTela()
@@ -36,9 +38,16 @@ class CarroView(mv.MainView):
                 self.__atribuirDadosLidosTela(novoCarro, dadosLidos)
                 dadosNaoValidados = novoCarro.validar()
             #-----------------------------------------------------------------------------
-            carroController = cc.CarroController()
-            carroController.incluir(novoCarro)
-            print("Carro incluído com sucesso.")
+
+            #Confirmar com o usuário a inclusão do carro
+            print(novoCarro)
+            confirma = input("Confirma a inclusão do carro?[S/N] ")
+            if('s' in str(confirma).lower()):
+                carroController = cc.CarroController()
+                carroController.incluir(novoCarro)
+                print("Carro incluído com sucesso.")
+            else:
+                print("Operação cancelada")
         except Exception as e:
             print("Ocorreu uma falha na inclusão do carro "+ str(e))
     #--------------------------------------------------------------------------------
@@ -66,11 +75,16 @@ class CarroView(mv.MainView):
         '''
         if 'cor' in dadosLidos:
             carro.setCor(dadosLidos['cor'])
-        carro.setPlaca(dadosLidos['placa'])
-        carro.setQtdePortas(dadosLidos['qtde_portas'])
-        carro.setValorDiaria(dadosLidos['valor_diaria'])
-        carro.setAnoFabricacao(dadosLidos['ano_fabricacao'])
-        carro.setQuilometragem(dadosLidos['quilometragem'])
+        if 'placa' in dadosLidos:
+            carro.setPlaca(dadosLidos['placa'])
+        if 'qtde_portas' in dadosLidos:
+            carro.setQtdePortas(dadosLidos['qtde_portas'])
+        if 'valor_diaria' in dadosLidos:
+            carro.setValorDiaria(dadosLidos['valor_diaria'])
+        if 'ano_fabricacao' in dadosLidos:
+            carro.setAnoFabricacao(dadosLidos['ano_fabricacao'])
+        if 'quilometragem' in dadosLidos:
+            carro.setQuilometragem(dadosLidos['quilometragem'])
     #--------------------------------------------------------------------------------
 
     def apresentarListaCarro(self,listaCarro):
@@ -87,7 +101,7 @@ class CarroView(mv.MainView):
                   str(carro.getAnoFabricacao())+"\t"+\
                   str(carro.getQuilometragem())+"\t"+\
                   str(carro.getCor())+"\t"+\
-                  str(carro.getQtdePortas())+"\t"+\
+                  str(carro.getQtdePortas())+"\t\t"+\
                   str(carro.getValorDiaria()))
     #--------------------------------------------------------------------------------
 

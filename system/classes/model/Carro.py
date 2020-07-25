@@ -87,3 +87,16 @@ class Carro():
         return retorno
     # validar
     #-------------------------------------------------------------------------------------
+
+    def __str__(self):
+        '''
+        Método auxiliar para a impressão do objeto carro
+        :return:
+        '''
+        return "Placa: "+str(self._placa)+"\n"+\
+            "Ano fabricação: "+str(self._ano_fabricacao)+"\n"+\
+            "Quilometragem: "+str(self._quilometragem)+"\n"+\
+            "Cor: "+str(self._cor)+"\n"+\
+            "Qtde. portas: "+str(self._qtde_portas)+"\n"+\
+            "Valor diária: "+str(self._valor_diaria)
+    #-------------------------------------------------------------------------------------
