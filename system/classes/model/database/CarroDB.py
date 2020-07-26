@@ -63,3 +63,20 @@ class CarroDB(Connection.Connection):
             print('Ocorreu uma falha na listagem dos carros: ' + str(e))
         return retorno
     #----------------------------------------------------------------------------------------
+
+    def alterar(self,carro):
+        '''
+        Método responsável pelo atualização do objeto Carro na base de dados
+        :param carro:
+        :return:
+        '''
+    #----------------------------------------------------------------------------------------
+
+    def excluir(self,carro):
+        '''
+        Método responsável pela exclusão do Carro na base de dados.
+        :param carro:
+        :return:
+        '''
+    # ----------------------------------------------------------------------------------------
+
