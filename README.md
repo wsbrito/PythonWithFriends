@@ -1,5 +1,6 @@
 # PythonWithFriends
-A simple repository for my Python studies.
+## A simple repository for my Python studies.
 
-In 06/07/2020 was created the following folders examples for general use and system to all runnable Python files from our project.
-In 24/07/2020 project was updated with the first version of system with car's inclusion routines almost read.
+In *examples* folder there are another Python's projects contains parallel studies to help in system project.
+
+System is a simple car's rent system using object orientation paradigm adopt model view control pattern. In near future test domain driven will be incorporated.
