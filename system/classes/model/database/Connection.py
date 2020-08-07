@@ -1,23 +1,29 @@
+'''
+Arquivo da classe Connection
+'''
 import sqlite3
 import os
 
-class Connection():
+class Connection(object):
     '''
-    Classe responsável pela conexão com a base de dados
+    Classe responsavel pela conexao com a base de dados
     '''
 
-    def getConnection(self):
+    @classmethod
+    def get_connection(cls):
         '''
-        Método para retornar uma conexão com o banco de dados locadora.db.
+        Metodo para retornar uma conexao com o banco de dados locadora.db.
         :return: Objeto connect do SQLite
         '''
         current_path = os.getcwd() + '/classes/model/database/'
-        print(current_path)
+        #print(current_path)
         return sqlite3.connect(current_path + 'locadora.db')
+    #--------------------------------------------------------------------
 
-    def getCursos(self):
+    def get_cursor(self):
         '''
-        Método para retornar um objeto cursor
+        Metodo para retornar um objeto cursor
         :return: Objeto cursor do SQLite
         '''
-        return self.getConnection().cursor()
+        return self.get_connection().cursor()
+    #--------------------------------------------------------------------

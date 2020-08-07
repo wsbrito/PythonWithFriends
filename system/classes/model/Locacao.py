@@ -1,15 +1,21 @@
-class Locacao():
+'''
+Arquivo referente a classe de negocio Locacao
+'''
+class Locacao(object):
     '''
-    Classe de negócio responsável pelos dados da locação.
+    Classe de negocio responsavel pelos dados da locacao.
     '''
 
-    # Definição dos atributos
+    # Definicao dos atributos
 
-    # Métodos get e set (acessores) para cada atributo
+    # Metodos get e set (acessores) para cada atributo
 
-    def validar(self):
+    # esse decorator devera ser retirado quando a classe estiver pronta
+    @classmethod
+    def validar(cls):
         '''
-        Método para validação do objeto antes de sua percistência na base de dados
-        :return: Dicionário com os atributos e falhas encontradas
+        Metodo para validacao do objeto antes de sua percistencia na base de dados
+        :return: Dicionario com os atributos e falhas encontradas
         '''
+        return {}
     #-------------------------------------------------------------------------------------

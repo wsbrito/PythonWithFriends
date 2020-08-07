@@ -1,23 +1,21 @@
 '''
 Start poin of Python With Friends application.
 '''
+from __future__ import print_function
 import classes.view.MenuPrincipalView as menu
 
 def main():
     '''
-    Definição do método main que será responsável por instanciar a classe
+    Definicao do metodo main que sera responsavel por instanciar a classe
     MenuPrincipalVeiw
     '''
-    # Instanciando um objeto da MenuPrincipalView
-    telaInicial = menu.MenuPrincipalView()
-    encerrou = telaInicial.opcoesSistema()
-    while(not encerrou):
-        encerrou = telaInicial.opcoesSistema()
+    tela_inicial = menu.MenuPrincipalView()
+    encerrou = tela_inicial.opcoes_sistema()
+    while not encerrou:
+        encerrou = tela_inicial.opcoes_sistema()
     print("Fim do programa")
-#------------------------------------------------------------------------
+    #------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    '''
-    Execução do método main
-    '''
+    #Execucao do metodo main
     main()

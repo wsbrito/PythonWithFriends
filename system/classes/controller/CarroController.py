@@ -1,27 +1,30 @@
+'''
+Arquivo referente a classe CarroController
+'''
 import classes.model.database.CarroDB as cdb
 from classes.view import CarroView as cv
 
-class CarroController():
+class CarroController(object):
     '''
-    Classe responsável para execução dos métodos para manipulação dos dados da classe carro
+    Classe responsavel para execucao dos metodos para manipulacao dos dados da classe carro
     '''
 
-    def incluir(self,carro):
+    @classmethod
+    def incluir(cls, carro):
         '''
-        Método responsável pela execução do método inserir da classe CarroDB
+        Metodo responsavel pela execucao do metodo inserir da classe CarroDB
         :param carro:
-        :return:
         '''
-        carroDB = cdb.CarroDB()
-        carroDB.inserir(carro)
+        carro_db = cdb.CarroDB()
+        carro_db.inserir(carro)
     #----------------------------------------------------------------------------
 
-    def listar(self):
+    @classmethod
+    def listar(cls):
         '''
-        Método responsável por retornar a lista de carros vindo da classe CarroDB
-        :return:
+        Metodo responsavel por retornar a lista de carros vindo da classe CarroDB
         '''
-        carroDB = cdb.CarroDB()
-        carroView = cv.CarroView()
-        carroView.apresentarListaCarro(carroDB.listar())
+        carro_db = cdb.CarroDB()
+        carro_view = cv.CarroView()
+        carro_view.apresentarListaCarro(carro_db.listar())
     #----------------------------------------------------------------------------

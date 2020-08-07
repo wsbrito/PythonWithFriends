@@ -1,27 +1,30 @@
+'''
+Arquivo referente a classe MainController
+'''
 import classes.view.CarroView as cv
 import classes.controller.CarroController as cc
 
-class MainController():
+class MainController(object):
     '''
-    Classe responsável por coordenar os principais fluxos das funcionalidades do sistema
-    como também se encarregará de cuidar da locação e devolução
+    Classe responsavel por coordenar os principais fluxos das funcionalidades do sistema
+    como tambem se encarregara de cuidar da locacao e devolucao
     '''
 
-    def opcaoCadastrarCarro(self):
+    @classmethod
+    def opcao_cadastrar_carro(cls):
         '''
-        Método que irá instaciar um objeto da classe CarroView para
-        a apresentação da tela para cadastro do carro
-        :return:
+        Metodo que ira instaciar um objeto da classe CarroView para
+        a apresentacao da tela para cadastro do carro
         '''
-        carroView = cv.CarroView()
-        carroView.opcaoCadastrarCarro()
+        carro_view = cv.CarroView()
+        carro_view.opcaoCadastrarCarro()
     #-----------------------------------------------------------------------
 
-    def opcaoAlterarCarro(self):
+    @classmethod
+    def opcao_alterar_carro(cls):
         '''
-        Metodo responsavel pela apresentaçao de lista de carros na tela
-        :return:
+        Metodo responsavel pela apresentacao de lista de carros na tela
         '''
-        carroController = cc.CarroController()
-        carroController.listar()
+        carro_controller = cc.CarroController()
+        carro_controller.listar()
     #-----------------------------------------------------------------------

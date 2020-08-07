@@ -1,50 +1,49 @@
-from classes.model.Cliente import Cliente
+'''
+Arquivo da classe ClienteController
+'''
+#from classes.model.Cliente import Cliente
 
-class ClienteController():
+class ClienteController(object):
     '''
-    Classe responsável pelo fluxo das operação envolvendo o Cliente
+    Classe responsavel pelo fluxo das operacao envolvendo o Cliente
     '''
 
-    def incluir(self,cliente):
+    def incluir(self, cliente):
         '''
-        Método responsável por executar a inclusão do cliente através de um
+        Metodo responsavel por executar a inclusao do cliente atraves de um
         objeto ClienteDB
         :param cliente:
-        :return:
         '''
     #-------------------------------------------------------------------------------------
 
-    def alterar(self,cliente):
+    def alterar(self, cliente):
         '''
-        Método responsável por executar a alteração do cliente através de um
+        Metodo responsavel por executar a alteracao do cliente atraves de um
         objeto ClienteDB
         :param cliente:
-        :return:
         '''
     #-------------------------------------------------------------------------------------
 
-    def excluir(self,cliente):
+    def excluir(self, cliente):
         '''
-        Método responsável por executar a exclusão do cliente através de um
+        Metodo responsavel por executar a exclusao do cliente atraves de um
         objeto ClienteDB
         :param cliente:
-        :return:
         '''
     #-------------------------------------------------------------------------------------
 
-    def pesquisar(self,cliente):
+    def pesquisar(self, cliente):
         '''
-        Método responsável por efetuar uma pesquisa de cliente através de um
+        Metodo responsavel por efetuar uma pesquisa de cliente atraves de um
         objeto ClienteDB
         :param cliente:
-        :return:
+        :return: Objeto Cliente
         '''
     #-------------------------------------------------------------------------------------
 
     def listar(self):
         '''
-        Método responsável por efetuar listar os cliente da base de dados
-        :param cliente:
+        Metodo responsavel por efetuar listar os cliente da base de dados
         :return: List de Cliente
         '''
     #-------------------------------------------------------------------------------------

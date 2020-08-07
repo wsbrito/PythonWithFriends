@@ -3,21 +3,21 @@ import classes.view.MainView as mv
 
 class MenuPrincipalView(mv.MainView):
     '''
-    Classe responsável pelas iterações iniciais da aplicação com o usuário e
-    da chamada as demais classes da camada de apresentações do sistema
+    Classe responsavel pelas iteracoes iniciais da aplicacao com o usuario e
+    da chamada as demais classes da camada de apresentacoes do sistema
     '''
 
     '''
-    Variável para controle do encerramento do sistema
+    Variavel para controle do encerramento do sistema
     '''
     _encerrar_programa = False
 
     '''
-    Lista das opções do programa
+    Lista das opcoes do programa
     '''
     _opcoes = [0,1,2,3,4,5,6]
 
-    def __imprimeOpcoes(self):
+    def __imprime_opcoes(self):
         '''
         Mètodo auxiliar para apresentar as opções na tela
         '''
@@ -32,18 +32,18 @@ class MenuPrincipalView(mv.MainView):
         print("0 - Encerrar o programa")
     #-----------------------------------------------------------------------
 
-    def opcoesSistema(self):
+    def opcoes_sistema(self):
         '''
         Tela inicial da aplicação com as principais operações do sistema
         '''
         self.limparTela()
-        self.__imprimeOpcoes()
+        self.__imprime_opcoes()
         tecla = input("\nInforme a opção desejada e pressione a tecla ENTER para confirmar: ")
-        self.__validarOpcaoInformada(tecla)
+        self.__validar_opcao_informada(tecla)
         return self._encerrar_programa
     #-----------------------------------------------------------------------
 
-    def __validarOpcaoInformada(self,tecla):
+    def __validar_opcao_informada(self, tecla):
         '''
         Método para verificar se o que foi informado pelo usuário é uma opção válida e retonar
         '''
@@ -58,9 +58,9 @@ class MenuPrincipalView(mv.MainView):
                     return
                 if(opcao == 1):
                     #print("Cadastrar carro >> A opções ainda não está disponível")
-                    self.__opcaoCadastrarCarro()
+                    self.__opcao_cadastrar_carro()
                 elif(opcao == 2):
-                    self.__opcaoAlterarCarro()
+                    self.__opcao_alterar_carro()
                     print("Atualizar carro >> A opções ainda não está disponível")
                 elif(opcao == 3):
                     print("Cadastro de cliente >> A opções ainda não está disponível")
@@ -81,21 +81,21 @@ class MenuPrincipalView(mv.MainView):
             self.opcoesSistema()
     #-----------------------------------------------------------------------
 
-    def __opcaoCadastrarCarro(self):
+    def __opcao_cadastrar_carro(self):
         '''
         Método que irá apresentar a tela de cadastro de carro porém utilizando o método da
         classe MainContorller
         :return:
         '''
         mainController = m.MainController()
-        mainController.opcaoCadastrarCarro()
+        mainController.opcao_cadastrar_carro()
     #-----------------------------------------------------------------------
 
-    def __opcaoAlterarCarro(self):
+    def __opcao_alterar_carro(self):
         '''
         Método responsável pela alteração dos dados do carro
         :return:
         '''
         mainController = m.MainController()
-        mainController.opcaoAlterarCarro()
+        mainController.opcao_alterar_carro()
     # -----------------------------------------------------------------------

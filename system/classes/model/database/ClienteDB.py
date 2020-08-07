@@ -1,37 +1,39 @@
-from classes.model.Cliente import Cliente
+'''
+Arquivo da classe ClienteDB
+'''
+#from classes.model.Cliente import Cliente
 
-class ClienteDB():
+class ClienteDB(object):
     '''
-    Classe responsável pela manipulação dos dados do cliente na base de dados
+    Classe responsavel pela manipulacao dos dados do cliente na base de dados
     '''
 
-    def inserir(self,cliente):
+    def inserir(self, cliente):
         '''
-        Método responsável pela inclusão do objeto Cliente na base de dados
+        Metodo responsavel pela inclusao do objeto Cliente na base de dados
         :param cliente:
-        :return:
         '''
     # ----------------------------------------------------------------------------------------
 
-    def alterar(self, carro):
+    def alterar(self, cliente):
         '''
-        Método responsável pelo atualização do objeto Cliente na base de dados
-        :param carro:
-        :return:
-        '''
-    # ----------------------------------------------------------------------------------------
-
-    def excluir(self, carro):
-        '''
-        Método responsável pela exclusão do Cliente na base de dados.
-        :param carro:
-        :return:
+        Metodo responsavel pelo atualizacao do objeto Cliente na base de dados
+        :param cliente
         '''
     # ----------------------------------------------------------------------------------------
 
-    def listar(self):
+    def excluir(self, cliente):
         '''
+        Metodo responsavel pela exclusao do Cliente na base de dados.
+        :param cliente
+        '''
+    # ----------------------------------------------------------------------------------------
 
+    # esse decorator deve ser retirado quando o metodo for conluido
+    @classmethod
+    def listar(cls):
+        '''
+        Metodo para retornar a lista de clientes
         :return: List de Cliente
         '''
-
+        return []

@@ -1,14 +1,20 @@
-class Cliente():
+'''
+Arquivo referente a classe Cliente
+'''
+class Cliente(object):
     '''
-    Classe de negócio relacionada ao cliente da locadora
+    Classe de negocio relacionada ao cliente da locadora
     '''
 
-    # Definição dos atributos
+    # Definicao dos atributos
 
-    # Métodos get e set (acessores) para cada atributo
+    # Metodos get e set (acessores) para cada atributo
 
-    def validar(self):
+    # esse decorator devera ser retirado quando a classe estiver pronta
+    @classmethod
+    def validar(cls):
         '''
-        Método para validação do objeto antes de sua percistência na base de dados
-        :return: Dicionário com os atributos e falhas encontradas
+        Metodo para validacao do objeto antes de sua percistencia na base de dados
+        :return: Dicionario com os atributos e falhas encontradas
         '''
+        return {}

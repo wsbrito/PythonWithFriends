@@ -1,6 +1,6 @@
 '''
-Arquivo de inicialização que tem a responsabilidade de identificar se o banco de dados
-locadora.db existe se não ele irá criálo
+Arquivo de inicializacao que tem a responsabilidade de identificar se o banco de dados
+locadora.db existe se nao ele ira cria-lo
 '''
 import os
 
@@ -11,7 +11,7 @@ try:
 
     # Validando a existência do banco de dados no diretório das classes do sistema
     if not os.path.exists(current_path + 'locadora.db'):
-        print('Banco de dados não localizado')
+        print('Banco de dados n'+chr(227)+'o localizado')
 
         import sqlite3
 
@@ -61,4 +61,4 @@ try:
         print('Banco de dados criado com sucesso')
 
 except Exception as e:
-    print('Ocorreu uma falha na criação do banco de dados: ' + str(e))
+    print('Ocorreu uma falha na cria'+chr(231)+chr(227)+'o do banco de dados: ' + str(e))
