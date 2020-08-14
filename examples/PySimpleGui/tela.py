@@ -30,7 +30,7 @@ class TelaPython():
             É possível recuperar os dados através das chaves
             '''
             nome = self.values['nome']
-            print(f'nome: {nome}')
+            #print(f'nome: {nome}')
 
 tela = TelaPython()
 
