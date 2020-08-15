@@ -8,6 +8,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="SimpleTest" />
     <orderEntry type="module" module-name="system" />
+    <orderEntry type="module" module-name="REST-Application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
