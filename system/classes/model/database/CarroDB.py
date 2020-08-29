@@ -8,6 +8,7 @@ import sqlite3
 from classes.model import Carro
 from classes.model.database import Connection
 
+
 class CarroDB(Connection.Connection):
     '''
     Classe responsavel pelos acessos a tabela carro
@@ -16,10 +17,13 @@ class CarroDB(Connection.Connection):
     def inserir(self, carro):
         '''
         Metodo responsavel pela inclusao do carro na base de dados.
+        :return Dicionario com { 'id':'Id do carro inserido', 'msg':'Carro inserido com sucesso' } ou
+        { 'erro':'Mensagem de erro no processo' }
         '''
         try:
             connection = self.get_connection()
             cursor = connection.cursor()
+            # Inserindo o registo do carro
             cursor.execute(
                 'INSERT INTO carro (placa,cor,qtde_portas,'\
                 'ano_fabricacao,quilometragem,valor_diaria)' \
@@ -30,12 +34,17 @@ class CarroDB(Connection.Connection):
                  carro.get_ano_fabricacao(),
                  carro.get_quilometragem(),
                  carro.get_valor_diaria()))
-
+            # Recuperando o ID inderido
+            cursor.execute('SELECT last_insert_rowid()');
+            for id in cursor.fetchall():
+                retorno = dict([('id',id[0]),('msg','Carro inserido com sucesso')])
             connection.commit()
             cursor.close()
             connection.close()
+            return retorno
         except sqlite3.DatabaseError as db_erro:
-            print('Ocorreu uma falha na listagem dos carros: ' + str(db_erro))
+            print('Ocorreu uma falha na inclusão do carro: ' + str(db_erro))
+            return dict([('erro',str(db_erro))])
     #----------------------------------------------------------------------------------------
 
     def listar(self):

@@ -1,0 +1,6 @@
+{
+  "diretorio_banco_de_dados" : "classes/model/database/",
+  "nome_banco_de_dados" : "locadora.db",
+  "diretorio_banco_de_dados_teste" : "tests/model/database/",
+  "nome_banco_de_dados_teste" : "locadora_teste.db"
+}

@@ -1,30 +1,56 @@
 '''
-Arquivo referente a classe MainController
+Arquivo referente a antiga classe MainController que faz a interface com
+os metodos disponibilizados pela API
 '''
-import classes.view.CarroView as cv
-import classes.controller.CarroController as cc
+from classes.controller.CarroController import *
 
-class MainController(object):
+# 3rd party modules
+from flask import make_response, abort
+
+def inserir_carro(carro):
     '''
-    Classe responsavel por coordenar os principais fluxos das funcionalidades do sistema
-    como tambem se encarregara de cuidar da locacao e devolucao
+    :param carro:
+    :return:
+    #print(carro)
+    objeto_carro = CarroController.get_carro(carro)
+    #print(carro_)
+    retorno = CarroController.incluir(objeto_carro)
+    if 'erro' in retorno:
+        return abort(206,retorno['erro'])
+    return make_response(retorno, 201)
     '''
+    return make_response('Funcionalidade indisponível',404)
 
-    @classmethod
-    def opcao_cadastrar_carro(cls):
-        '''
-        Metodo que ira instaciar um objeto da classe CarroView para
-        a apresentacao da tela para cadastro do carro
-        '''
-        carro_view = cv.CarroView()
-        carro_view.opcaoCadastrarCarro()
-    #-----------------------------------------------------------------------
+def listar_carros():
+    '''
+    GET api/carro
+    Metodo para retornar a lista de carros do sistema
+    :return: Lista de carro
+    '''
+    return make_response('Funcionalidade indisponível',404)
 
-    @classmethod
-    def opcao_alterar_carro(cls):
-        '''
-        Metodo responsavel pela apresentacao de lista de carros na tela
-        '''
-        carro_controller = cc.CarroController()
-        carro_controller.listar()
-    #-----------------------------------------------------------------------
+def atualizar_carro(carro):
+    '''
+    PUT api/carro
+    Metodo preencher atualizar o carro no sistema
+    :return:
+    '''
+    return make_response('Funcionalidade indisponível',404)
+
+def get_carro(id):
+    '''
+    GET api/carro/{id}
+    Metodo para recuperar o carro do id passado como parametro
+    :param id: 
+    :return: 
+    '''
+    return make_response('Funcionalidade indisponível',404)
+
+def deletar_carro(id):
+    '''
+    DELETE api/carro/{id}
+    Metodo para exclusao do carro do id passado como parametro
+    :param id: 
+    :return: 
+    '''
+    return make_response('Funcionalidade indisponível',404)

@@ -4,61 +4,72 @@ locadora.db existe se nao ele ira cria-lo
 '''
 import os
 
-try:
+def criar_banco_de_dados(diretorio, nome_do_banco, excluir_se_existir = False):
+    try:
+        #print('os.getcwd() = '+os.getcwd())
+        #current_path = os.getcwd() + '/classes/model/database/'
 
-    #print('os.getcwd() = '+os.getcwd())
-    current_path = os.getcwd() + '/classes/model/database/'
+        pode_criar = False
 
-    # Validando a existência do banco de dados no diretório das classes do sistema
-    if not os.path.exists(current_path + 'locadora.db'):
-        print('Banco de dados n'+chr(227)+'o localizado')
+        # Validando a existencia do banco de dados
+        if not os.path.exists(diretorio+nome_do_banco):
+            print('Banco de dados n'+chr(227)+'o localizado')
+            pode_criar = True
+        else:
+            print('Banco de dados localizado')
+            if excluir_se_existir:
+                os.remove(diretorio+nome_do_banco)
+        #--------------------------------------------------------
 
-        import sqlite3
 
-        # Criando o banco de dados
-        con = sqlite3.connect(current_path + 'locadora.db')
-        cur = con.cursor()
+        if pode_criar:
 
-        # Executando a criação das tabelas
-        cur.execute(
-            'CREATE TABLE carro(' \
-            'id integer PRIMARY key AUTOINCREMENT,' \
-            'placa varchar(7) not NULL,' \
-            'cor varchar(20),' \
-            'qtde_portas integer,' \
-            'ano_fabricacao integer,' \
-            'quilometragem integer,' \
-            'valor_diaria float)')
+            import sqlite3
 
-        cur.execute(
-            'CREATE TABLE cliente (' \
-            'id integer PRIMARY key AUTOINCREMENT,' \
-            'nome varchar(60) NOT NULL,' \
-            'sexo varchar(1),' \
-            'data_nascimento date NOT NULL,' \
-            'cnh varchar(20),' \
-            'data_vencimento_cnh date,' \
-            'endereco varchar(200),' \
-            'email varchar(100),' \
-            'tel_celular varchar(15) NOT NULL )')
+            # Criando o banco de dados
+            con = sqlite3.connect(diretorio+nome_do_banco)
+            cur = con.cursor()
 
-        cur.execute(
-            'CREATE table locacao (' \
-            'id integer PRIMARY key AUTOINCREMENT,' \
-            'id_carro integer not NULL,' \
-            'id_cliente INteger not null,' \
-            'data_inicial date NOT NULL,' \
-            'data_final date,' \
-            'km_inicial integer NOT NULL,' \
-            'km_final integer,' \
-            'valor_total float,' \
-            'FOREIGN KEY (id_carro) REFERENCES carro (id) on DELETE RESTRICT,' \
-            'FOREIGN key (id_cliente) REFERENCES cliente (id) on DELETE RESTRICT)')
+            # Executando a criação das tabelas
+            cur.execute(
+                'CREATE TABLE carro(' \
+                'id integer PRIMARY key AUTOINCREMENT,' \
+                'placa varchar(7) not NULL,' \
+                'cor varchar(20),' \
+                'qtde_portas integer,' \
+                'ano_fabricacao integer,' \
+                'quilometragem integer,' \
+                'valor_diaria float)')
 
-        # fechando a conexão
-        con.close()
+            cur.execute(
+                'CREATE TABLE cliente (' \
+                'id integer PRIMARY key AUTOINCREMENT,' \
+                'nome varchar(60) NOT NULL,' \
+                'sexo varchar(1),' \
+                'data_nascimento date NOT NULL,' \
+                'cnh varchar(20),' \
+                'data_vencimento_cnh date,' \
+                'endereco varchar(200),' \
+                'email varchar(100),' \
+                'tel_celular varchar(15) NOT NULL )')
 
-        print('Banco de dados criado com sucesso')
+            cur.execute(
+                'CREATE table locacao (' \
+                'id integer PRIMARY key AUTOINCREMENT,' \
+                'id_carro integer not NULL,' \
+                'id_cliente INteger not null,' \
+                'data_inicial date NOT NULL,' \
+                'data_final date,' \
+                'km_inicial integer NOT NULL,' \
+                'km_final integer,' \
+                'valor_total float,' \
+                'FOREIGN KEY (id_carro) REFERENCES carro (id) on DELETE RESTRICT,' \
+                'FOREIGN key (id_cliente) REFERENCES cliente (id) on DELETE RESTRICT)')
 
-except Exception as e:
-    print('Ocorreu uma falha na cria'+chr(231)+chr(227)+'o do banco de dados: ' + str(e))
+            # fechando a conexão
+            con.close()
+
+            print('Banco de dados criado com sucesso')
+
+    except Exception as e:
+        print('Ocorreu uma falha na cria'+chr(231)+chr(227)+'o do banco de dados: ' + str(e))

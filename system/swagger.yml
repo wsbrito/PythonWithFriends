@@ -1,0 +1,102 @@
+swagger: "2.0"
+info:
+  description: Este é o arquivo SWAGGER do projeto Python With Friends
+  version: "1.0.0"
+  title: Swagger Rest - Python With Friends
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+# Paths supported by the server application
+paths:
+  /carro:
+    get:
+      operationId: classes.controller.MainController.listar_carros
+      tags:
+        - Carro
+      summary: Método para listar todos os carros do sistema.
+      description: Método para listar todos os carros do sistema.
+      parameters: []
+      responses:
+        200:
+          description: Lista de carros recuperada com sucesso.
+    post:
+      operationId: classes.controller.MainController.inserir_carro
+      tags:
+        - Carro
+      summary: Método para inclusão de um novo carro no sistema
+      description: Os dados deverão ser passados no corpo no POST.
+      parameters:
+        - name: carro
+          in: body
+          description: Carro para ser incluído
+          required: True
+          schema:
+            type: object
+            properties:
+              placa:
+                type: string
+                description: Placa do carro
+              cor:
+                type: string
+                description: Cor do caro
+              qtde_portas:
+                type: integer
+                description: Quantidade de portas do carro
+              ano_fabricacao:
+                type: integer
+                description: Ano de fabricação do carro
+              quilometragem:
+                type: integer
+                description: Quilometragem do carro
+              valor_diaria:
+                type: number
+                description: Valor da diária do carro
+      responses:
+        201:
+          description: Carro inserido com sucesso
+    put:
+      operationId: classes.controller.MainController.atualizar_carro
+      tags:
+        - Carro
+      summary: Método para atualizar os dados do carro no sistema.
+      description: Método para atualizar os dados do carro no sistema.
+      parameters: []
+      responses:
+        201:
+          description: Carro atualizado com sucesso.
+
+  /carro/{id}:
+    get:
+      operationId: classes.controller.MainController.get_carro
+      tags:
+        - Carro
+      summary: Método para recuperar os dados do carro.
+      description: Método para recuperar os dados do carro.
+      parameters:
+        - name: id
+          in: path
+          description: Id do carro no sistema.
+          type: number
+          required: True
+      responses:
+        200:
+          description: Carro recuperado com sucesso.
+    delete:
+      operationId: classes.controller.MainController.deletar_carro
+      tags:
+        - Carro
+      summary: Método para excluir os dados do carro.
+      description: Método para excluir os dados do carro.
+      parameters:
+        - name: id
+          in: path
+          description: Id do carro no sistema.
+          type: number
+          required: True
+      responses:
+        201:
+          description: Carro excluído com sucesso.
