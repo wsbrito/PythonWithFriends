@@ -68,7 +68,6 @@ paths:
       responses:
         201:
           description: Carro atualizado com sucesso.
-
   /carro/{id}:
     get:
       operationId: classes.controller.MainController.get_carro
@@ -100,3 +99,145 @@ paths:
       responses:
         201:
           description: Carro excluído com sucesso.
+  /carro/disponiveis:
+    get:
+      operationId: classes.controller.MainController.listar_carros_disponiveis
+      tags:
+        - Carro
+      summary: Método para recuperar os dados disponíveis para locação.
+      description: Método para recuperar os dados disponíveis para locação.
+      parameters: []
+      responses:
+        200:
+          description: Lista de carros recuperada com sucesso.
+  /cliente:
+    get:
+      operationId: classes.controller.MainController.listar_clientes
+      tags:
+        - Cliente
+      summary: Método para recuperar os clientes cadastrados no sistema.
+      description: Método para recuperar os clientes cadastrados no sistema.
+      parameters: []
+      responses:
+        200:
+          description: Lista de clientes recuperada com sucesso.
+    post:
+      operationId: classes.controller.MainController.incluir_cliente
+      tags:
+        - Cliente
+      summary: Método para incluir um cliente sistema.
+      description: Método para incluir um cliente sistema.
+      parameters: []
+      responses:
+        201:
+          description: Cliente incluído com sucesso.
+    put:
+      operationId: classes.controller.MainController.atualizar_cliente
+      tags:
+        - Cliente
+      summary: Método para atualizar os dados do cliente no sistema.
+      description: Método para atualizar os dados do cliente no sistema.
+      parameters: []
+      responses:
+        201:
+          description: Cliente atualizado com sucesso.
+  /cliente/{id}:
+    get:
+      operationId: classes.controller.MainController.get_cliente
+      tags:
+        - Cliente
+      summary: Método para recuperar os dados do cliente do id passado como parâmetro.
+      description: Método para recuperar os dados do cliente do id passado como parâmetro.
+      parameters:
+        - name: id
+          in: path
+          description: Id do cliente no sistema.
+          type: number
+          required: True
+      responses:
+        200:
+          description: Cliente recuperado com sucesso.
+    delete:
+      operationId: classes.controller.MainController.excluir_cliente
+      tags:
+        - Cliente
+      summary: Método para excluir os dados do cliente.
+      description: Método para excluir os dados do cliente.
+      parameters:
+        - name: id
+          in: path
+          description: Id do cliente no sistema.
+          type: number
+          required: True
+      responses:
+        201:
+          description: Cliente excluído com sucesso.
+  /locacao:
+    post:
+      operationId: classes.controller.MainController.incluir_locacao
+      tags:
+        - Locação
+      summary: Método para incluir uma locação no sistema.
+      description: Método para incluir uma locação no sistema.
+      parameters: []
+      responses:
+        201:
+          description: Locação incluída com sucesso.
+    put:
+      operationId: classes.controller.MainController.atualizar_locacao
+      tags:
+        - Locação
+      summary: Método para atualizar a locação no sistema.
+      description: Método para atualizar a locação no sistema para a operação de devolução recomenda-se a execução do método calcular locação para evitar falhas na operação.
+      parameters: []
+      responses:
+        201:
+          description: Locação atualizada com sucesso.
+  /locacao/{id}:
+    get:
+      operationId: classes.controller.MainController.get_locacao_por_id
+      tags:
+        - Locação
+      summary: Método para recuperar a locação do id passado como parâmetro.
+      description: Método para recuperar a locação do id passado como parâmetro.
+      parameters:
+        - name: id
+          in: path
+          description: Id da locação no sistema.
+          type: number
+          required: True
+      responses:
+        200:
+          description: Locação recuperada com sucesso.
+  /locacao/calculo/{id}:
+    get:
+      operationId: classes.controller.MainController.calcular_locacao
+      tags:
+        - Locação
+      summary: Método para calcular a locação.
+      description: Método para calcular a locação.
+      parameters:
+        - name: id
+          in: path
+          description: Id da locação no sistema.
+          type: number
+          required: True
+      responses:
+        200:
+          description: Locação calculada com sucesso.
+  /locacao/cpf-placa/{cpf_placa}:
+    get:
+      operationId: classes.controller.MainController.get_locacao_por_cpf_ou_placa
+      tags:
+        - Locação
+      summary: Método para recuperar a locação pelo CPF do cliente ou PLACA do carro.
+      description: Método para recuperar a locação pelo CPF do cliente ou PLACA do carro.
+      parameters:
+        - name: cpf_placa
+          in: path
+          description: CPF do cliente ou PLACA do carro.
+          type: string
+          required: True
+      responses:
+        200:
+          description: Locação recuperada com sucesso.
