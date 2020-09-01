@@ -31,7 +31,8 @@ def get_config_data():
 def start_loggin():
     '''
     Metodo responsavel por iniciar o log da aplicacao.
-    Importante: Ainda em fase de testes.
+    Importante: Ainda em fase de testes. Pois a principio apenas a execucao do
+    rest-app.py esta registrando no arquivo.
     :return: 
     '''
     path = get_project_root()

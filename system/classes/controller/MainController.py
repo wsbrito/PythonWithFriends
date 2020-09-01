@@ -2,9 +2,8 @@
 Arquivo referente a antiga classe MainController que faz a interface com
 os metodos disponibilizados pela API
 '''
+from __future__ import print_function
 from classes.controller.CarroController import *
-
-# 3rd party modules
 from flask import make_response, abort
 
 def inserir_carro(carro):
@@ -12,12 +11,14 @@ def inserir_carro(carro):
     :param carro:
     :return:
     '''
+    logging.debug('Chamou o inserir_carro')
     #print(carro)
     objeto_carro = CarroController.get_carro(carro)
     #print(carro_)
     retorno = CarroController.incluir(objeto_carro)
     if 'erro' in retorno:
         return abort(206,retorno['erro'])
+    logging.debug('inserir_carro executado com sucesso')
     return make_response(retorno, 201)
     #return make_response('Funcionalidade indisponível',404)
 
