@@ -4,6 +4,7 @@ projeto Python With Friends
 '''
 import connexion
 from flask import (render_template)
+from util import util
 
 # Create the application instance
 #app = Flask(__name__, template_folder="templates")
@@ -27,4 +28,5 @@ def home():
 
 # If we're running in stand alone mode, run the application
 if __name__ == '__main__':
+    util.iniciar_aplicacao()
     app.run(host='0.0.0.0', port=5000, debug=True)

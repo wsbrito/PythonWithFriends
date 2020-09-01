@@ -2,12 +2,10 @@
 Arquivo da classe CarroDB
 '''
 from __future__ import print_function
-
+import logging
 import sqlite3
-
 from classes.model import Carro
 from classes.model.database import Connection
-
 
 class CarroDB(Connection.Connection):
     '''
@@ -21,6 +19,7 @@ class CarroDB(Connection.Connection):
         { 'erro':'Mensagem de erro no processo' }
         '''
         try:
+            logging.debug('Iniciou o inserir carro')
             connection = self.get_connection()
             cursor = connection.cursor()
             # Inserindo o registo do carro
@@ -41,8 +40,10 @@ class CarroDB(Connection.Connection):
             connection.commit()
             cursor.close()
             connection.close()
+            logging.debug('Carro inserido com sucesso')
             return retorno
         except sqlite3.DatabaseError as db_erro:
+            logging.error('Ocorreu uma falha na inclusão do carro',db_erro)
             print('Ocorreu uma falha na inclusão do carro: ' + str(db_erro))
             return dict([('erro',str(db_erro))])
     #----------------------------------------------------------------------------------------

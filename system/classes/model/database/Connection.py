@@ -2,7 +2,7 @@
 Arquivo da classe Connection
 '''
 import sqlite3
-import json
+from util import util
 
 class Connection(object):
     '''
@@ -22,13 +22,14 @@ class Connection(object):
         Essa forcacao do caminho do arquivo nao ficou legal mas teremos que
         conviver com ela ate conseguirmos uma solucao definitiva
         '''
-        with open("../../../config.json") as json_data_file:
-            data = json.load(json_data_file)
+        path = util.get_project_root()
+        path = str(path) + '/'
+        data = util.get_config_data()
 
         if self._banco_de_teste:
-            return sqlite3.connect('../../../'+data['diretorio_banco_de_dados_teste'] + data['nome_banco_de_dados_teste'])
+            return sqlite3.connect(str(path)+data['diretorio_banco_de_dados_teste'] + data['nome_banco_de_dados_teste'])
 
-        return sqlite3.connect(data['diretorio_banco_de_dados'] + data['nome_banco_de_dados'])
+        return sqlite3.connect(str(path)+data['diretorio_banco_de_dados'] + data['nome_banco_de_dados'])
     #--------------------------------------------------------------------
 
     def get_cursor(self):

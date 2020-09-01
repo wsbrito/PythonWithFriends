@@ -11,6 +11,7 @@ def inserir_carro(carro):
     '''
     :param carro:
     :return:
+    '''
     #print(carro)
     objeto_carro = CarroController.get_carro(carro)
     #print(carro_)
@@ -18,8 +19,7 @@ def inserir_carro(carro):
     if 'erro' in retorno:
         return abort(206,retorno['erro'])
     return make_response(retorno, 201)
-    '''
-    return make_response('Funcionalidade indisponível',404)
+    #return make_response('Funcionalidade indisponível',404)
 
 def listar_carros():
     '''
