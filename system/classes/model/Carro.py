@@ -1,7 +1,10 @@
 '''
-Carro.py - arquivo da classe Carro
+Carro - arquivo da classe Carro
 '''
-class Carro(object):
+import re
+from util import util
+
+class Carro():
     '''
     Classe de negocio que representa o carro
     '''
@@ -115,29 +118,48 @@ class Carro(object):
 
         if len(str(self._placa)) == 0:
             retorno['placa'] = 'Placa '+chr(233)+' de preenchimento obrigat'+chr(243)+'rio'
+        else:
+            if not util.placa_valida(self._placa):
+                retorno['placa'] = 'A placa informada ' + chr(233) + ' inv'+chr(225)+'lida'
 
         try:
-            int(self._ano_fabricacao)
+            if int(self._ano_fabricacao) < 1955:
+                retorno['ano_fabricacao'] = \
+                    'Ano de fabrica' + chr(231) + chr(277) + 'o '\
+                    + chr(233) + ' deve ser superior a 1955'
         except ValueError:
             retorno['ano_fabricacao'] = \
                 'Ano de fabrica'+chr(231)+chr(277)+'o '+chr(233)+' um dado num'+chr(233)+'rico'
 
         try:
-            int(self._qtde_portas)
+            if int(self._qtde_portas) < 1:
+                retorno['qtde_portas'] = 'O carro deve ter pelo menos uma porta'
         except ValueError:
             retorno['qtde_portas'] = 'A quantidade de portas '\
                                      +chr(233)+' um dado num'+chr(233)+'rico'
 
         try:
-            int(self._quilometragem)
+            if int(self._quilometragem) < 0:
+                retorno['quilometragem'] = 'A quilometragem deve maior ou igual a zero'
         except ValueError:
             retorno['quilometragem'] = 'A quilometragem '+chr(233)+' um dado num'+chr(233)+'rico'
 
         try:
-            float(self._valor_diaria)
+            if float(self._valor_diaria) < 50:
+                retorno['valor_diaria'] = \
+                    'O valor da di'+chr(225)+'ria '+chr(233)+' deve ser de pelo menos R$ 50,00'
         except ValueError:
             retorno['valor_diaria'] = \
                 'O valor da di'+chr(225)+'ria '+chr(233)+' um dado num'+chr(233)+'rico'
+
+        try:
+            if not util.cor_valida(self._cor):
+                retorno['cor'] = 'A cor informada ' + chr(233) + ' inv' + chr(225) + 'lida'
+        except re.error:
+            retorno['cor'] = 'A cor informada ' + chr(233) + ' inv' + chr(225) + 'lida'
+
+        # Artificio para que o Main_controller saiba que alguma erro ocorreu no processo
+        retorno['valido'] = len(retorno) == 0
 
         return retorno
     # validar

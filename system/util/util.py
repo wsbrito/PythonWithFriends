@@ -8,7 +8,7 @@ from pathlib import Path
 import json
 import os
 import logging
-
+import re
 
 def get_project_root() -> Path:
     '''
@@ -36,8 +36,8 @@ def start_loggin():
     :return: 
     '''
     path = get_project_root()
-    logging.basicConfig(filename=str(path)+'/locadora.log', level=logging.INFO)
-    #return logging.getLogger(__name__)
+    logging.basicConfig(filename=str(path)+'/locadora.log', level=logging.DEBUG)
+    return logging.getLogger()
 
 def criar_banco_de_dados(diretorio, nome_do_banco, excluir_se_existir = False):
     '''
@@ -128,17 +128,31 @@ def iniciar_aplicacao():
     Metodo responsavel por preparar o banco de dados e do log da aplicacao.
     :return:
     '''
-    start_loggin()
-    logger = logging.getLogger(__name__)
-    logger.debug('Iniciando a aplicacao')
     application_path = get_project_root()
     application_path = str(application_path) + '/'
-
     data = get_config_data()
-
     criar_banco_de_dados(application_path + data['diretorio_banco_de_dados'], data['nome_banco_de_dados'], False)
-
     criar_banco_de_dados(application_path + data['diretorio_banco_de_dados_teste'], data['nome_banco_de_dados_teste'], True)
-    logger.debug('Aplicacao iniciada')
 
+def placa_valida(placa):
+    '''
+    Metodo para validar se a placa informada no carro e uma placa que atende aos seguintes padroes:
+    AA0000 ou AAA0000 ou AAA0A00
+    :param placa em formato texto:
+    :return: True or False
+    '''
+    if len(str(placa)) == 6:
+        x = re.search(r"[A-Z]{2}[0-9]{4}", placa)
+    else:
+        x = re.search(r"[A-Z]{3}[0-9][0-9A-Z][0-9]{2}", placa)
+    return x
 
+def cor_valida(cor):
+    '''
+    Metodo auxiliar para validar se a cor informada e uma cor valida no formato
+    hexadecimal
+    :param cor: no formato texto
+    :return: True ou False
+    '''
+    match = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', cor)
+    return match

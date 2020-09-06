@@ -3,7 +3,7 @@ Arquivo da classe ClienteDB
 '''
 #from classes.model.Cliente import Cliente
 
-class ClienteDB(object):
+class Cliente_DB(object):
     '''
     Classe responsavel pela manipulacao dos dados do cliente na base de dados
     '''

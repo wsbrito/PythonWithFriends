@@ -1,10 +1,10 @@
 '''
 Arquivo referente a classe CarroController
 '''
-from classes.model.database.CarroDB import *
+from classes.model.database.Carro_DB import *
 from classes.model.Carro import *
 
-class CarroController(object):
+class Carro_controller():
     '''
     Classe responsavel para execucao dos metodos para manipulacao dos dados da classe carro
     '''
@@ -16,8 +16,11 @@ class CarroController(object):
         :param carro:
         :return Dicionario com o ID do carro inserido ou mensagem de erro
         '''
-        carro_db = CarroDB()
-        return carro_db.inserir(carro)
+        retorno = carro.validar()
+        if retorno['valido']:
+            carro_db = Carro_DB()
+            return carro_db.inserir(carro)
+        return retorno
     #----------------------------------------------------------------------------
 
     @classmethod
@@ -30,13 +33,14 @@ class CarroController(object):
     #----------------------------------------------------------------------------
 
     @classmethod
-    def get_carro(cls,carro_json):
+    def get_carro(cls, carro_json):
         '''
         Metodo resposavel por receber um JSON vindo da API e tranformar
         num objeto Carro
         :param carro_json:
         :return: Carro
         '''
+        logging.debug('iniciou get_carro')
         carro = Carro()
         carro.set_placa(carro_json['placa'])
         carro.set_ano_fabricacao(carro_json['ano_fabricacao'])
@@ -44,6 +48,5 @@ class CarroController(object):
         carro.set_qtde_portas(carro_json['qtde_portas'])
         carro.set_quilometragem(carro_json['quilometragem'])
         carro.set_valor_diaria(carro_json['valor_diaria'])
+        logging.debug('get_carro concluido com sucesso')
         return carro
-
-

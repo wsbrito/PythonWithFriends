@@ -14,7 +14,7 @@ basePath: /api
 paths:
   /carro:
     get:
-      operationId: classes.controller.MainController.listar_carros
+      operationId: classes.controller.Main_controller.listar_carros
       tags:
         - Carro
       summary: Método para listar todos os carros do sistema.
@@ -24,11 +24,11 @@ paths:
         200:
           description: Lista de carros recuperada com sucesso.
     post:
-      operationId: classes.controller.MainController.inserir_carro
+      operationId: classes.controller.Main_controller.inserir_carro
       tags:
         - Carro
       summary: Método para inclusão de um novo carro no sistema
-      description: Os dados deverão ser passados no corpo no POST.
+      description: Os dados deverão ser passados no corpo no POST. Onde a placa do carro deverá sergui o padrão AA0000, AAA0000 ou AAA0A00 (Onde 'A' corresponde a letras e o zero aos números). As cores deverão seguir o padrão heximadecimal RGB ('#FFFFFF'). a quantidade de portas deverá ser sempre um número maior que 2. O ano deverá ser superio a 1955 (primeiro ano de fabricação de um automóvel no Brasil). O valor da diária deverá ser superior a R$ 50,00.
       parameters:
         - name: carro
           in: body
@@ -59,22 +59,22 @@ paths:
         201:
           description: Carro inserido com sucesso
     put:
-      operationId: classes.controller.MainController.atualizar_carro
+      operationId: classes.controller.Main_controller.atualizar_carro
       tags:
         - Carro
       summary: Método para atualizar os dados do carro no sistema.
-      description: Método para atualizar os dados do carro no sistema.
+      description: Os dados do carro deverão ser passados no corpo do PUT e as regras de validação são as mesmas da inclusão do carro.
       parameters: []
       responses:
         201:
           description: Carro atualizado com sucesso.
   /carro/{id}:
     get:
-      operationId: classes.controller.MainController.get_carro
+      operationId: classes.controller.Main_controller.get_carro
       tags:
         - Carro
       summary: Método para recuperar os dados do carro.
-      description: Método para recuperar os dados do carro.
+      description: O {id} deverá ser um número maior que zero.
       parameters:
         - name: id
           in: path
@@ -85,11 +85,11 @@ paths:
         200:
           description: Carro recuperado com sucesso.
     delete:
-      operationId: classes.controller.MainController.deletar_carro
+      operationId: classes.controller.Main_controller.deletar_carro
       tags:
         - Carro
       summary: Método para excluir os dados do carro.
-      description: Método para excluir os dados do carro.
+      description: O carro só poderá ser excluído do sistema se não houver nenhuma locação associada a ele.
       parameters:
         - name: id
           in: path
@@ -101,7 +101,7 @@ paths:
           description: Carro excluído com sucesso.
   /carro/disponiveis:
     get:
-      operationId: classes.controller.MainController.listar_carros_disponiveis
+      operationId: classes.controller.Main_controller.listar_carros_disponiveis
       tags:
         - Carro
       summary: Método para recuperar os dados disponíveis para locação.
@@ -112,7 +112,7 @@ paths:
           description: Lista de carros recuperada com sucesso.
   /cliente:
     get:
-      operationId: classes.controller.MainController.listar_clientes
+      operationId: classes.controller.Main_controller.listar_clientes
       tags:
         - Cliente
       summary: Método para recuperar os clientes cadastrados no sistema.
@@ -122,7 +122,7 @@ paths:
         200:
           description: Lista de clientes recuperada com sucesso.
     post:
-      operationId: classes.controller.MainController.incluir_cliente
+      operationId: classes.controller.Main_controller.incluir_cliente
       tags:
         - Cliente
       summary: Método para incluir um cliente sistema.
@@ -132,7 +132,7 @@ paths:
         201:
           description: Cliente incluído com sucesso.
     put:
-      operationId: classes.controller.MainController.atualizar_cliente
+      operationId: classes.controller.Main_controller.atualizar_cliente
       tags:
         - Cliente
       summary: Método para atualizar os dados do cliente no sistema.
@@ -143,7 +143,7 @@ paths:
           description: Cliente atualizado com sucesso.
   /cliente/{id}:
     get:
-      operationId: classes.controller.MainController.get_cliente
+      operationId: classes.controller.Main_controller.get_cliente
       tags:
         - Cliente
       summary: Método para recuperar os dados do cliente do id passado como parâmetro.
@@ -158,7 +158,7 @@ paths:
         200:
           description: Cliente recuperado com sucesso.
     delete:
-      operationId: classes.controller.MainController.excluir_cliente
+      operationId: classes.controller.Main_controller.excluir_cliente
       tags:
         - Cliente
       summary: Método para excluir os dados do cliente.
@@ -174,7 +174,7 @@ paths:
           description: Cliente excluído com sucesso.
   /locacao:
     post:
-      operationId: classes.controller.MainController.incluir_locacao
+      operationId: classes.controller.Main_controller.incluir_locacao
       tags:
         - Locação
       summary: Método para incluir uma locação no sistema.
@@ -184,7 +184,7 @@ paths:
         201:
           description: Locação incluída com sucesso.
     put:
-      operationId: classes.controller.MainController.atualizar_locacao
+      operationId: classes.controller.Main_controller.atualizar_locacao
       tags:
         - Locação
       summary: Método para atualizar a locação no sistema.
@@ -195,7 +195,7 @@ paths:
           description: Locação atualizada com sucesso.
   /locacao/{id}:
     get:
-      operationId: classes.controller.MainController.get_locacao_por_id
+      operationId: classes.controller.Main_controller.get_locacao_por_id
       tags:
         - Locação
       summary: Método para recuperar a locação do id passado como parâmetro.
@@ -211,7 +211,7 @@ paths:
           description: Locação recuperada com sucesso.
   /locacao/calculo/{id}:
     get:
-      operationId: classes.controller.MainController.calcular_locacao
+      operationId: classes.controller.Main_controller.calcular_locacao
       tags:
         - Locação
       summary: Método para calcular a locação.
@@ -227,7 +227,7 @@ paths:
           description: Locação calculada com sucesso.
   /locacao/cpf-placa/{cpf_placa}:
     get:
-      operationId: classes.controller.MainController.get_locacao_por_cpf_ou_placa
+      operationId: classes.controller.Main_controller.get_locacao_por_cpf_ou_placa
       tags:
         - Locação
       summary: Método para recuperar a locação pelo CPF do cliente ou PLACA do carro.

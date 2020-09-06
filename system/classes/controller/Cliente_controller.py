@@ -1,9 +1,9 @@
 '''
-Arquivo da classe ClienteController
+Arquivo da classe cliente_controller
 '''
 #from classes.model.Cliente import Cliente
 
-class ClienteController(object):
+class Cliente_controller(object):
     '''
     Classe responsavel pelo fluxo das operacao envolvendo o Cliente
     '''

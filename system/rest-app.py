@@ -7,7 +7,6 @@ from flask import (render_template)
 from util import util
 
 # Create the application instance
-#app = Flask(__name__, template_folder="templates")
 app = connexion.App(__name__, specification_dir="./")
 
 # Read the swagger.yml file to configure the endpoints

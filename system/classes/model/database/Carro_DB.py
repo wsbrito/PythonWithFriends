@@ -7,7 +7,7 @@ import sqlite3
 from classes.model import Carro
 from classes.model.database import Connection
 
-class CarroDB(Connection.Connection):
+class Carro_DB(Connection.Connection):
     '''
     Classe responsavel pelos acessos a tabela carro
     '''

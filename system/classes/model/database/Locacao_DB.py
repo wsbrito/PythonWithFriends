@@ -6,7 +6,7 @@ Arquivo da classe LocacaoDB
 #from classes.model.Locacao import Locacao
 from classes.model.database import Connection
 
-class LocacaoDB(Connection.Connection):
+class Locacao_DB(Connection.Connection):
     '''
     Classe responsavel pela manipulacao dos dados da Locacao no banco de dados
     '''
