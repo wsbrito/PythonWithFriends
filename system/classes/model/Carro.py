@@ -4,7 +4,7 @@ Carro - arquivo da classe Carro
 import re
 from util import util
 
-class Carro():
+class Carro(object):
     '''
     Classe de negocio que representa o carro
     '''

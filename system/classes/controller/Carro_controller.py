@@ -1,10 +1,11 @@
 '''
 Arquivo referente a classe CarroController
 '''
-from classes.model.database.Carro_DB import *
+import logging
+from classes.model.database.Carro_db import *
 from classes.model.Carro import *
 
-class Carro_controller():
+class Carro_controller(object):
     '''
     Classe responsavel para execucao dos metodos para manipulacao dos dados da classe carro
     '''
@@ -18,7 +19,7 @@ class Carro_controller():
         '''
         retorno = carro.validar()
         if retorno['valido']:
-            carro_db = Carro_DB()
+            carro_db = Carro_db()
             return carro_db.inserir(carro)
         return retorno
     #----------------------------------------------------------------------------
@@ -28,7 +29,7 @@ class Carro_controller():
         '''
         Metodo responsavel por retornar a lista de carros vindo da classe CarroDB
         '''
-        carro_db = CarroDB()
+        #carro_db = Carro_db()
         #carro_view.apresentarListaCarro(carro_db.listar())
     #----------------------------------------------------------------------------
 

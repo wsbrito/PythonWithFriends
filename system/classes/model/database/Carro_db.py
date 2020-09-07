@@ -1,5 +1,5 @@
 '''
-Arquivo da classe CarroDB
+Arquivo da classe Carro_db
 '''
 from __future__ import print_function
 import logging
@@ -7,7 +7,7 @@ import sqlite3
 from classes.model import Carro
 from classes.model.database import Connection
 
-class Carro_DB(Connection.Connection):
+class Carro_db(Connection.Connection):
     '''
     Classe responsavel pelos acessos a tabela carro
     '''
@@ -15,7 +15,8 @@ class Carro_DB(Connection.Connection):
     def inserir(self, carro):
         '''
         Metodo responsavel pela inclusao do carro na base de dados.
-        :return Dicionario com { 'id':'Id do carro inserido', 'msg':'Carro inserido com sucesso' } ou
+        :return Dicionario com
+        { 'id':'Id do carro inserido', 'msg':'Carro inserido com sucesso' } ou
         { 'erro':'Mensagem de erro no processo' }
         '''
         try:
@@ -34,18 +35,18 @@ class Carro_DB(Connection.Connection):
                  carro.get_quilometragem(),
                  carro.get_valor_diaria()))
             # Recuperando o ID inderido
-            cursor.execute('SELECT last_insert_rowid()');
+            cursor.execute('SELECT last_insert_rowid()')
             for id in cursor.fetchall():
-                retorno = dict([('id',id[0]),('msg','Carro inserido com sucesso')])
+                retorno = dict([('id', id[0]), ('msg', 'Carro inserido com sucesso')])
             connection.commit()
             cursor.close()
             connection.close()
             logging.debug('Carro inserido com sucesso')
             return retorno
         except sqlite3.DatabaseError as db_erro:
-            logging.error('Ocorreu uma falha na inclusão do carro',db_erro)
-            print('Ocorreu uma falha na inclusão do carro: ' + str(db_erro))
-            return dict([('erro',str(db_erro))])
+            logging.error('Ocorreu uma falha na inclus'+chr(227)+'o do carro', db_erro)
+            print('Ocorreu uma falha na inclus'+chr(227)+'o do carro: ' + str(db_erro))
+            return dict([('erro', str(db_erro))])
     #----------------------------------------------------------------------------------------
 
     def listar(self):

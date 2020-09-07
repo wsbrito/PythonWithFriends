@@ -36,7 +36,7 @@ def listar_carros():
     :return: Lista de carro
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -48,7 +48,7 @@ def atualizar_carro(carro):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -57,11 +57,11 @@ def get_carro(id):
     '''
     GET api/carro/{id}
     Metodo para recuperar o carro do id passado como parametro
-    :param id: 
-    :return: 
+    :param id:
+    :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -70,11 +70,11 @@ def deletar_carro(id):
     '''
     DELETE api/carro/{id}
     Metodo para exclusao do carro do id passado como parametro
-    :param id: 
-    :return: 
+    :param id:
+    :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -86,7 +86,7 @@ def listar_carros_disponiveis():
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -98,7 +98,7 @@ def listar_clientes():
     :return: Lista de clientes
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -111,7 +111,7 @@ def incluir_cliente(cliente):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -124,7 +124,7 @@ def atualizar_cliente(cliente):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -137,7 +137,7 @@ def get_cliente(id):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -150,7 +150,7 @@ def excluir_cliente(id):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -163,7 +163,7 @@ def incluir_locacao(locacao):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -176,7 +176,7 @@ def atualizar_locacao(locacao):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -189,7 +189,7 @@ def get_locacao_por_id(id):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -202,7 +202,7 @@ def calcular_locacao(id):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -215,7 +215,7 @@ def get_locacao_por_cpf_ou_placa(cpf_placa):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indisponível', 404)
+        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)

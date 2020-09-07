@@ -4,7 +4,7 @@ Testes unitario da classe CarroDB
 import unittest
 
 from classes.model import Carro as c
-from classes.model.database import Carro_DB as c_db
+from classes.model.database import Carro_db as carro_db
 
 class Teste_inclusao_carro(unittest.TestCase):
 
@@ -23,10 +23,10 @@ class Teste_inclusao_carro(unittest.TestCase):
     '''
     def test_inclusao_correta(self):
         carro = self.get_carro_para_teste()
-        carro_db = c_db.Carro_DB(True)
-        retorno = carro_db.inserir(carro)
+        carro_database = carro_db.Carro_db(True)
+        retorno = carro_database.inserir(carro)
         id = int(retorno['id'])
-        self.assertGreater(id,0)
+        self.assertGreater(id, 0)
 
     '''
     Testando a inclusao do carro sem placa 
