@@ -71,7 +71,7 @@ def deletar_carro(id):
     DELETE api/carro/{id}
     Metodo para exclusao do carro do id passado como parametro
     :param id:
-    :return:
+    :return:ivat
     '''
     try:
         return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
