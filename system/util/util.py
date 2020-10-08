@@ -9,6 +9,8 @@ import json
 import os
 import logging
 import re
+#import simplejson as json2
+from json import JSONEncoder
 
 def get_project_root() -> Path:
     '''
@@ -156,3 +158,24 @@ def cor_valida(cor):
     '''
     match = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', cor)
     return match
+
+class LocadoraEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
+def converte_lista_json(lista,nome='lista'):
+    '''
+    Metodo auxiliar para conversao de uma lista de objetos do sistema em
+    uma lista objetos serializado JSON
+    '''
+    lista_convertida = []
+    for objeto in lista:
+        lista_convertida.append(objeto.__dict__())
+    return dict([(nome,lista_convertida)])
+
+def converte_objeto_json(objeto,nome='objeto'):
+    '''
+    Metodo auxiliar para conversao de um objeto do sistema em
+    um objeto serializado JSON
+    '''
+    return dict([(nome,objeto.__dict__())])

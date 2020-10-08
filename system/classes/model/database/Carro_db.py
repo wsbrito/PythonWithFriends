@@ -83,19 +83,104 @@ class Carro_db(Connection.Connection):
         return retorno
     #----------------------------------------------------------------------------------------
 
+    def get(self,id):
+        '''
+        Metodo responsavel pela recuperacao de todos os carros da base de dados
+        :return: Lista de objetos carros
+        '''
+        try:
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            cursor.execute(
+                'SELECT '\
+                '   id '\
+                '   ,placa'\
+                '   ,cor'\
+                '   ,qtde_portas'\
+                '   ,ano_fabricacao'\
+                '   ,quilometragem'\
+                '   ,valor_diaria '\
+                'FROM carro '\
+                'WHERE id = ?',id)
+            for linha in cursor.fetchall():
+                carro = Carro.Carro()
+                carro.set_id(linha[0])
+                carro.set_placa(linha[1])
+                carro.set_cor(linha[2])
+                carro.set_qtde_portas(linha[3])
+                carro.set_ano_fabricacao(linha[4])
+                carro.set_quilometragem(linha[5])
+                carro.set_valor_diaria(linha[6])
+            return carro
+        except sqlite3.DatabaseError as db_erro:
+            print('Ocorreu uma falha na recupera' + chr(231) + chr(227) + 'o do carro: ' + str(db_erro))
+    #----------------------------------------------------------------------------------------
+
     def alterar(self, carro):
         '''
         Metodo responsavel pelo atualizacao do objeto Carro na base de dados
         :param carro:
         :return:
         '''
+        try:
+            logging.debug('Iniciou o alterar carro')
+            if carro.get_id() <= 0:
+                return dict([('erro', 'O ID do carro '+chr(233)+' inv'+chr(225)+'lido')])
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            # Atualizando os dados do carro
+            cursor.execute(
+                'UPDATE carro SET ' \
+                '  placa = ?,' \
+                '  cor = ?, ' \
+                '  qtde_portas = ?, ' \
+                '  ano_fabricacao = ?, ' \
+                '  quilometragem = ?, ' \
+                '  valor_diaria = ? ' \
+                'WHERE id = ?',
+                (carro.get_placa(),
+                 carro.get_cor(),
+                 carro.get_qtde_portas(),
+                 carro.get_ano_fabricacao(),
+                 carro.get_quilometragem(),
+                 carro.get_valor_diaria(),
+                 carro.get_id()))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            retorno = dict([('msg', 'Carro atualizado com sucesso')])
+            logging.debug('Carro atualizado com sucesso')
+            return retorno
+        except sqlite3.DatabaseError as db_erro:
+            logging.error('Ocorreu uma falha na altera' + chr(231) + chr(227) + 'o do carro', db_erro)
+            print('Ocorreu uma falha na altera' + chr(231) + chr(227) + 'o do carro: ' + str(db_erro))
+            return dict([('erro', str(db_erro))])
     #----------------------------------------------------------------------------------------
 
-    def excluir(self, carro):
+    def excluir(self, id):
         '''
         Metodo responsavel pela exclusao do Carro na base de dados.
         :param carro:
         :return:
         '''
+        try:
+            logging.debug('Iniciou o excluir carro')
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            # Atualizando os dados do carro
+            cursor.execute(
+                'DELETE FROM carro ' \
+                'WHERE id = ?',
+                (id,))
+            connection.commit()
+            cursor.close()
+            connection.close()
+            retorno = dict([('msg', 'Carro exclu'+ chr(237) +'do com sucesso')])
+            logging.debug('Carro exclu'+ chr(237) +' com sucesso')
+            return retorno
+        except sqlite3.DatabaseError as db_erro:
+            logging.error('Ocorreu uma falha na exclus'+ chr(227) + 'o do carro', db_erro)
+            print('Ocorreu uma falha na exclus' + chr(227) + 'o do carro: ' + str(db_erro))
+            return dict([('erro', str(db_erro))])
     # ----------------------------------------------------------------------------------------
 

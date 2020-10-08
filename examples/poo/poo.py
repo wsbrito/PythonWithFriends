@@ -12,6 +12,9 @@ class Car:
     def setMaxSpeed(self, speed):
         self.__maxspeed = speed
 
+    def __dict__(self):
+        return dict([('max',self.__maxspeed),("name",self.__name)] )
+
 """
 Bloco principal da aplicação
 """
@@ -22,3 +25,4 @@ if __name__ == '__main__':
     redcar.drive()
     redcar.setMaxSpeed(320)
     redcar.drive()
+    print(redcar.__dict__())

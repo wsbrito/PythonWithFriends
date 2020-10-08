@@ -23,6 +23,7 @@ paths:
       responses:
         200:
           description: Lista de carros recuperada com sucesso.
+
     post:
       operationId: classes.controller.Main_controller.inserir_carro
       tags:
@@ -58,47 +59,46 @@ paths:
       responses:
         201:
           description: Carro inserido com sucesso
+
     put:
       operationId: classes.controller.Main_controller.atualizar_carro
       tags:
         - Carro
       summary: Método para atualizar os dados do carro no sistema.
       description: Os dados do carro deverão ser passados no corpo do PUT e as regras de validação são as mesmas da inclusão do carro.
-      parameters: []
+      parameters:
+        - name: carro
+          in: body
+          description: Carro para ser atualizado
+          required: True
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: Identificador do carro no sistema
+              placa:
+                type: string
+                description: Placa do carro
+              cor:
+                type: string
+                description: Cor do caro
+              qtde_portas:
+                type: integer
+                description: Quantidade de portas do carro
+              ano_fabricacao:
+                type: integer
+                description: Ano de fabricação do carro
+              quilometragem:
+                type: integer
+                description: Quilometragem do carro
+              valor_diaria:
+                type: number
+                description: Valor da diária do carro
       responses:
         201:
           description: Carro atualizado com sucesso.
-  /carro/{id}:
-    get:
-      operationId: classes.controller.Main_controller.get_carro
-      tags:
-        - Carro
-      summary: Método para recuperar os dados do carro.
-      description: O {id} deverá ser um número maior que zero.
-      parameters:
-        - name: id
-          in: path
-          description: Id do carro no sistema.
-          type: number
-          required: True
-      responses:
-        200:
-          description: Carro recuperado com sucesso.
-    delete:
-      operationId: classes.controller.Main_controller.deletar_carro
-      tags:
-        - Carro
-      summary: Método para excluir os dados do carro.
-      description: O carro só poderá ser excluído do sistema se não houver nenhuma locação associada a ele.
-      parameters:
-        - name: id
-          in: path
-          description: Id do carro no sistema.
-          type: number
-          required: True
-      responses:
-        201:
-          description: Carro excluído com sucesso.
+
   /carro/disponiveis:
     get:
       operationId: classes.controller.Main_controller.listar_carros_disponiveis
@@ -110,6 +110,40 @@ paths:
       responses:
         200:
           description: Lista de carros recuperada com sucesso.
+
+  /carro/{id}:
+    get:
+      operationId: classes.controller.Main_controller.get_carro
+      tags:
+        - Carro
+      summary: Método para recuperar os dados do carro.
+      description: O {id} deverá ser um número maior que zero.
+      parameters:
+        - name: id
+          in: path
+          description: Id do carro no sistema.
+          type: string
+          required: True
+      responses:
+        200:
+          description: Carro recuperado com sucesso.
+
+    delete:
+      operationId: classes.controller.Main_controller.deletar_carro
+      tags:
+        - Carro
+      summary: Método para excluir os dados do carro.
+      description: O carro só poderá ser excluído do sistema se não houver nenhuma locação associada a ele.
+      parameters:
+        - name: id
+          in: path
+          description: Id do carro no sistema.
+          type: string
+          required: True
+      responses:
+        201:
+          description: Carro excluído com sucesso.
+
   /cliente:
     get:
       operationId: classes.controller.Main_controller.listar_clientes

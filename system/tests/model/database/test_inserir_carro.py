@@ -3,8 +3,8 @@ Testes unitario da classe CarroDB
 '''
 import unittest
 
-from classes.model import Carro as c
-from classes.model.database import Carro_db as carro_db
+from system.classes.model import Carro as c
+from system.classes.model.database import Carro_db as carro_db
 
 class Teste_inclusao_carro(unittest.TestCase):
 

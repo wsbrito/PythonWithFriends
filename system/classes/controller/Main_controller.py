@@ -36,7 +36,9 @@ def listar_carros():
     :return: Lista de carro
     '''
     try:
-        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        #return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        lista = Carro_controller.listar()
+        return make_response(util.converte_lista_json(lista,'carros'), 200)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -48,9 +50,19 @@ def atualizar_carro(carro):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        #return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        objeto_carro = Carro_controller.get_carro(carro)
+        retorno = Carro_controller.alterar(objeto_carro)
+        if 'erro' in retorno:
+            #return abort(206, retorno['erro'])
+            return make_response(retorno, 206)
+        if 'valido' in retorno:
+            if not retorno['valido']:
+                return make_response(retorno, 206)
+        logger.debug('atualizar_carro executado com sucesso')
+        return make_response(retorno, 201)
     except Exception as e:
-        logger.exception('Falha na listagem dos carros', e)
+        logger.exception('Falha ao alterar o carro', e)
         return make_response('Erro interno no servidor', 503)
 
 def get_carro(id):
@@ -61,7 +73,9 @@ def get_carro(id):
     :return:
     '''
     try:
-        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        #return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        carro = Carro_controller.get_carro_by_id(id)
+        return make_response(util.converte_objeto_json(carro,'carro'), 200)
     except Exception as e:
         logger.exception('Falha na listagem dos carros', e)
         return make_response('Erro interno no servidor', 503)
@@ -71,12 +85,20 @@ def deletar_carro(id):
     DELETE api/carro/{id}
     Metodo para exclusao do carro do id passado como parametro
     :param id:
-    :return:ivat
+    :return:
     '''
     try:
-        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        #return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        retorno = Carro_controller.excluir(id)
+        if 'erro' in retorno:
+            return abort(206, retorno['erro'])
+        if 'valido' in retorno:
+            if not retorno['valido']:
+                return make_response(retorno, 206)
+        logger.debug('deletar_carro executado com sucesso')
+        return make_response(retorno, 201)
     except Exception as e:
-        logger.exception('Falha na listagem dos carros', e)
+        logger.exception('Falha exclus'+ chr(227) + 'o do carro', e)
         return make_response('Erro interno no servidor', 503)
 
 def listar_carros_disponiveis():

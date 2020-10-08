@@ -177,3 +177,18 @@ class Carro(object):
             "Qtde. portas: "+str(self._qtde_portas)+"\n"+\
             "Valor di"+chr(225)+"ria: "+str(self._valor_diaria)
     #-------------------------------------------------------------------------------------
+
+    def __dict__(self):
+        '''
+        Metodo responsavel por converter o objeto num dicionario e assim
+        possibilitar a sua rapida conversao em JSON
+        return um objeto carro no formato dict
+        '''
+        return dict([('id',self._id),
+                     ('placa',self._placa),
+                     ('cor',self._cor),
+                     ('qtde_portas',self._qtde_portas),
+                     ('ano_fabricacao',self._ano_fabricacao),
+                     ('quilometragem',self._quilometragem),
+                     ('valor_diaria',self._valor_diaria)])
+    #-------------------------------------------------------------------------------------
