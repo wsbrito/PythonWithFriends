@@ -83,6 +83,45 @@ class Carro_db(Connection.Connection):
         return retorno
     #----------------------------------------------------------------------------------------
 
+    def listar_disponiveis(self):
+        '''
+        Metodo responsavel pela recuperacao de todos os carros
+        disponiveis da base de dados
+        :return: Lista de objetos carros
+        '''
+        retorno = []
+        try:
+            connection = self.get_connection()
+            cursor = connection.cursor()
+            cursor.execute(
+                'SELECT '\
+                '   id '\
+                '   ,placa'\
+                '   ,cor'\
+                '   ,qtde_portas'\
+                '   ,ano_fabricacao'\
+                '   ,quilometragem'\
+                '   ,valor_diaria '\
+                'FROM carro ' \
+                'where not exists '\
+                '      (select 1 '\
+                '       from locacao '\
+                '       where carro.id = locacao.id_carro) ')
+            for linha in cursor.fetchall():
+                carro = Carro.Carro()
+                carro.set_id(linha[0])
+                carro.set_placa(linha[1])
+                carro.set_cor(linha[2])
+                carro.set_qtde_portas(linha[3])
+                carro.set_ano_fabricacao(linha[4])
+                carro.set_quilometragem(linha[5])
+                carro.set_valor_diaria(linha[6])
+                retorno.append(carro)
+        except sqlite3.DatabaseError as db_erro:
+            print('Ocorreu uma falha na listagem dos carros: ' + str(db_erro))
+        return retorno
+    #----------------------------------------------------------------------------------------
+
     def get(self,id):
         '''
         Metodo responsavel pela recuperacao de todos os carros da base de dados

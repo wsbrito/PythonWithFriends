@@ -12,7 +12,7 @@ basePath: /api
 
 # Paths supported by the server application
 paths:
-  /people:
+  /run:
     get:
       operationId: people.read_all
       tags:

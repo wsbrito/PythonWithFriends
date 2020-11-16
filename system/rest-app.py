@@ -9,7 +9,7 @@ from util import util
 # Create the application instance
 app = connexion.App(__name__, specification_dir="./")
 
-# Read the swagger.yml file to configure the endpoints
+# Read the swagger-original.yml file to configure the endpoints
 # Editor para validar o swagger
 # https://editor.swagger.io/
 # Para visualizar o swagger http://0.0.0.0:5000/api/ui

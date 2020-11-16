@@ -34,6 +34,15 @@ class Carro_controller(object):
     #----------------------------------------------------------------------------
 
     @classmethod
+    def listar_disponiveis(cls):
+        '''
+        Metodo responsavel por retornar a lista de carros vindo da classe CarroDB
+        '''
+        carro_db = Carro_db()
+        return carro_db.listar_disponiveis()
+    #----------------------------------------------------------------------------
+
+    @classmethod
     def get_carro(cls, carro_json):
         '''
         Metodo resposavel por receber um JSON vindo da API e tranformar

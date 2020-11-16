@@ -108,9 +108,11 @@ def listar_carros_disponiveis():
     :return:
     '''
     try:
-        return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        #return make_response('Funcionalidade indispon'+chr(237)+'vel', 404)
+        lista = Carro_controller.listar_disponiveis()
+        return make_response(util.converte_lista_json(lista, 'carros'), 200)
     except Exception as e:
-        logger.exception('Falha na listagem dos carros', e)
+        logger.exception('Falha na listagem dos carros disponiveis', e)
         return make_response('Erro interno no servidor', 503)
 
 def listar_clientes():
